@@ -33,7 +33,7 @@ public class NetherStuffMod implements ModInitializer {
 				() -> () -> "{} is accessing Porting Lib from the client!",
 				() -> () -> "{} is accessing Porting Lib from the server!"
 		), NAME);
-		Registry.register(Registries.ITEM, new Identifier(ID, "custom_item"), CUSTOM_ITEM);
+		Registry.register(Registries.ITEM, new Identifier(ID, "test_item"), CUSTOM_ITEM);
 	}
 
 	public static ResourceLocation id(String path) {
