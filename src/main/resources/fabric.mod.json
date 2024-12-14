@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "nether_stuff",
+  "version": "${version}",
+  "name": "Nether Stuff",
+  "description": "A Create addon for the Nether",
+  "authors": [
+    "Diggity"
+  ],
+  "contact": {
+    "sources": "https://github.com/Fabricators-of-Create/create-fabric-addon-template"
+  },
+  "license": "CC0",
+  "icon": "assets/nether_stuff/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.diggity.nether_stuff.NetherStuffMod"
+    ]
+  },
+  "mixins": [
+    "nether_stuff.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": ">=${fabric_api_version}",
+    "create": "${create_version}",
+    "minecraft": "${minecraft_version}"
+  }
+}
