@@ -17,6 +17,8 @@ import net.minecraft.world.item.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.IDN;
+
 public class NetherStuffMod implements ModInitializer {
 	public static final String ID = "nether_stuff";
 	public static final String NAME = "Nether Stuff";
@@ -31,7 +33,7 @@ public class NetherStuffMod implements ModInitializer {
 				() -> () -> "{} is accessing Porting Lib from the client!",
 				() -> () -> "{} is accessing Porting Lib from the server!"
 		), NAME);
-		Registry.register(Registries.ITEM, new Identifier("tutorial", "custom_item"), CUSTOM_ITEM);
+		Registry.register(Registries.ITEM, new Identifier(ID, "custom_item"), CUSTOM_ITEM);
 	}
 
 	public static ResourceLocation id(String path) {
