@@ -40,9 +40,7 @@ public class ModItems {
 	}
 	public static final ItemEntry<TestItem> TEST_ITEM =
 			REGISTRATE.item("test_item", TestItem::new)
-					.properties(p -> p.stacksTo(16)
-							.rarity(Rarity.UNCOMMON)
-							.fireResistant())
+					.properties(properties -> properties.stacksTo(16))
 					.register();
 
 	public static void register()
