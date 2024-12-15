@@ -1,5 +1,6 @@
 package com.diggity.nether_stuff;
 
+import com.diggity.nether_stuff.fluid.ModFluids;
 import com.diggity.nether_stuff.item.ModItems;
 import com.diggity.nether_stuff.item.TestItem;
 import com.simibubi.create.Create;
@@ -43,6 +44,7 @@ public class NetherStuffMod implements ModInitializer {
 		), NAME);
 		ModItems.register();
 		REGISTRATE.register();
+		ModFluids.register();
 	}
 
 	public static ResourceLocation id(String path) {

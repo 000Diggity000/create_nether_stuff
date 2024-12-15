@@ -3,6 +3,9 @@ package com.diggity.nether_stuff.item;
 import com.diggity.nether_stuff.NetherStuffMod;
 
 
+import com.diggity.nether_stuff.creative_tab.RegisterTab;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.foundation.utility.Components;
 import com.tterrag.registrate.util.entry.ItemEntry;
 
@@ -33,18 +36,12 @@ import static com.simibubi.create.AllTags.forgeItemTag;
 
 
 public class ModItems {
-	public static final ResourceKey<CreativeModeTab> BASE = ResourceKey.create(Registries.CREATIVE_MODE_TAB, NetherStuffMod.id("base"));
-	public static final CreativeModeTab BASE_CREATIVE_TAB =
-			Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, BASE,
-					FabricItemGroup.builder()
-							.title(Components.translatable("itemGroup.nether_stuff.base"))
-							.icon(Items.ANVIL::getDefaultInstance)
-							.build());
+
 	static {
-		REGISTRATE.setCreativeTab(BASE);
+		REGISTRATE.setCreativeTab(RegisterTab.BASE_CREATIVE_TAB.key());
 	}
-	public static final ItemEntry<Item> TEST_ITEM =
-			taggedIngredient("test_item", forgeItemTag("copper_plates"), PLATES.tag);
+	public static final ItemEntry<Item> SOUL =
+			taggedIngredient("soul", forgeItemTag("soul"));
 
 	@SafeVarargs
 	private static ItemEntry<Item> taggedIngredient(String name, TagKey<Item>... tags) {

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "nether_stuff:item/test_item"
+    "layer0": "nether_stuff:item/soul"
   }
 }
