@@ -15,9 +15,11 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import com.simibubi.create.foundation.item.TagDependentIngredientItem;
 
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
@@ -25,6 +27,9 @@ import net.minecraft.world.item.Rarity;
 import org.intellij.lang.annotations.Identifier;
 
 import static com.diggity.nether_stuff.NetherStuffMod.REGISTRATE;
+import static com.simibubi.create.AllTags.AllItemTags.CRUSHED_RAW_MATERIALS;
+import static com.simibubi.create.AllTags.AllItemTags.PLATES;
+import static com.simibubi.create.AllTags.forgeItemTag;
 
 
 public class ModItems {
@@ -38,11 +43,15 @@ public class ModItems {
 	static {
 		REGISTRATE.setCreativeTab(BASE);
 	}
-	public static final ItemEntry<TestItem> TEST_ITEM =
-			REGISTRATE.item("test_item", TestItem::new)
-					.properties(properties -> properties.stacksTo(16))
-					.register();
+	public static final ItemEntry<Item> TEST_ITEM =
+			taggedIngredient("test_item", forgeItemTag("copper_plates"), PLATES.tag);
 
+	@SafeVarargs
+	private static ItemEntry<Item> taggedIngredient(String name, TagKey<Item>... tags) {
+		return REGISTRATE.item(name, Item::new)
+				.tag(tags)
+				.register();
+	}
 	public static void register()
 	{
 
