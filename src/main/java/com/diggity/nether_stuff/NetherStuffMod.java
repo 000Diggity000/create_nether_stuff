@@ -1,5 +1,6 @@
 package com.diggity.nether_stuff;
 
+import com.diggity.nether_stuff.creative_tab.RegisterTab;
 import com.diggity.nether_stuff.fluid.ModFluids;
 import com.diggity.nether_stuff.item.ModItems;
 import com.diggity.nether_stuff.item.TestItem;
@@ -42,9 +43,12 @@ public class NetherStuffMod implements ModInitializer {
 				() -> () -> "{} is accessing Porting Lib from the client!",
 				() -> () -> "{} is accessing Porting Lib from the server!"
 		), NAME);
+		RegisterTab.register();
 		ModItems.register();
-		REGISTRATE.register();
 		ModFluids.register();
+
+		REGISTRATE.register();
+
 	}
 
 	public static ResourceLocation id(String path) {
