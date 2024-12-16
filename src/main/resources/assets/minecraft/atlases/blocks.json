@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "nether_stuff:fluid/molten_souls_flow"
+    },
+    {
+      "type": "single",
+      "resource": "nether_stuff:fluid/molten_souls_still"
+    }
+  ]
+}

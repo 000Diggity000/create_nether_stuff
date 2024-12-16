@@ -1,6 +1,8 @@
 package com.diggity.nether_stuff.fluid;
 
 
+import com.diggity.nether_stuff.NetherStuffMod;
+import com.simibubi.create.AllTags;
 import com.simibubi.create.content.fluids.VirtualFluid;
 import com.simibubi.create.foundation.fluid.FluidHelper;
 import com.simibubi.create.foundation.utility.Iterate;
@@ -17,10 +19,13 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.base.FullItemFluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.network.chat.Component;
@@ -32,19 +37,21 @@ import javax.annotation.Nullable;
 import static com.diggity.nether_stuff.NetherStuffMod.REGISTRATE;
 import static com.simibubi.create.AllTags.forgeFluidTag;
 import static net.minecraft.world.item.Items.BUCKET;
+import static net.minecraft.world.item.Items.COBBLESTONE;
+import static net.minecraft.world.item.Items.NETHER_STAR;
 
 public class ModFluids {
-	public static final FluidEntry<SimpleFlowableFluid.Flowing> MELTED_SOULS =
-			REGISTRATE.standardFluid("melted_souls")
-					.lang("Melted Souls")
-					.tag(forgeFluidTag("soul"), FluidTags.LAVA) // fabric: water tag controls physics
+	public static final FluidEntry<SimpleFlowableFluid.Flowing> MOLTEN_SOULS =
+			REGISTRATE.standardFluid("molten_souls")
+					.lang("Molten Souls")
+				.tag(ModFluids.forgeFluidTag("molten_souls"), FluidTags.WATER) // fabric: water tag controls physics
 					.fluidProperties(p -> p.levelDecreasePerBlock(2)
 							.tickRate(25)
 							.flowSpeed(3)
 							.blastResistance(100f))
-					.fluidAttributes(() -> new CreateAttributeHandler("block.nether_stuff.melted_souls", 1500, 1400))
-					.onRegisterAfter(Registries.ITEM, melted_souls -> {
-						Fluid source = melted_souls.getSource();
+					.fluidAttributes(() -> new CreateAttributeHandler("block.nether_stuff.molten_souls", 1500, 1400))
+					.onRegisterAfter(Registries.ITEM, molten_souls -> {
+						Fluid source = molten_souls.getSource();
 						// transfer values
 						FluidStorage.combinedItemApiProvider(source.getBucket()).register(context ->
 								new FullItemFluidStorage(context, bucket -> ItemVariant.of(BUCKET), FluidVariant.of(source), FluidConstants.BUCKET));
@@ -75,10 +82,11 @@ public class ModFluids {
 		}
 		return null;
 	}
-
 	@Nullable
 	public static BlockState getLavaInteraction(FluidState fluidState) {
 		Fluid fluid = fluidState.getType();
+		if (fluid.isSame(MOLTEN_SOULS.get()))
+			return Blocks.COBBLESTONE.defaultBlockState();
 		return null;
 	}
 	private record CreateAttributeHandler(Component name, int viscosity, boolean lighterThanAir) implements FluidVariantAttributeHandler {
@@ -108,4 +116,7 @@ public class ModFluids {
 
 		public static void register() {
 		}
+	public static TagKey<Fluid> forgeFluidTag(String path) {
+		return AllTags.forgeTag(BuiltInRegistries.FLUID, path);
+	}
 }
