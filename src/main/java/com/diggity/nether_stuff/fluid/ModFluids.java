@@ -2,6 +2,7 @@ package com.diggity.nether_stuff.fluid;
 
 
 import com.diggity.nether_stuff.NetherStuffMod;
+import com.mojang.datafixers.types.templates.Tag;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.fluids.VirtualFluid;
 import com.simibubi.create.foundation.fluid.FluidHelper;
@@ -10,6 +11,7 @@ import com.tterrag.registrate.fabric.SimpleFlowableFluid;
 import com.tterrag.registrate.util.entry.FluidEntry;
 
 import io.github.fabricators_of_create.porting_lib.event.common.FluidPlaceBlockCallback;
+import io.github.fabricators_of_create.porting_lib.tags.Tags;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
@@ -21,6 +23,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.Level;
@@ -30,6 +33,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.WaterFluid;
 
 import javax.annotation.Nullable;
 
@@ -44,10 +49,10 @@ public class ModFluids {
 	public static final FluidEntry<SimpleFlowableFluid.Flowing> MOLTEN_SOULS =
 			REGISTRATE.standardFluid("molten_souls")
 					.lang("Molten Souls")
-				.tag(ModFluids.forgeFluidTag("molten_souls"), FluidTags.WATER) // fabric: water tag controls physics
+				.tag(forgeFluidTag("molten_souls"), FluidTags.WATER) // fabric: water tag controls physics
 					.fluidProperties(p -> p.levelDecreasePerBlock(2)
 							.tickRate(25)
-							.flowSpeed(3)
+							.flowSpeed(2)
 							.blastResistance(100f))
 					.fluidAttributes(() -> new CreateAttributeHandler("block.nether_stuff.molten_souls", 1500, 1400))
 					.onRegisterAfter(Registries.ITEM, molten_souls -> {

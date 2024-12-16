@@ -99,3 +99,26 @@ jar {
 		rename { "${it}_${project.archivesBaseName}" }
 	}
 }
+fabricApi {
+	configureDataGeneration()
+}
+loom {
+	runs {
+
+		datagen {
+			client()
+
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/generated/resources")}"
+			vmArg "-Dfabric-api.datagen.modid=nether_stuff"
+			vmArg "-Dporting_lib.datagen.existing_resources=${file("src/main/resources")}"
+		}
+
+		server {
+			runDir "run/server"
+		}
+
+	}
+
+}
