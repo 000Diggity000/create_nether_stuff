@@ -15,7 +15,7 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "com.diggity.nether_stuff.DataGen"
+      "com.diggity.nether_stuff.NetherStuffDataGen"
     ],
     "main": [
       "com.diggity.nether_stuff.NetherStuffMod"

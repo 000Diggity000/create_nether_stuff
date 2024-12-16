@@ -99,9 +99,7 @@ jar {
 		rename { "${it}_${project.archivesBaseName}" }
 	}
 }
-fabricApi {
-	configureDataGeneration()
-}
+
 loom {
 	runs {
 
