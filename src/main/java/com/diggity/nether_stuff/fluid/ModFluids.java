@@ -49,14 +49,14 @@ public class ModFluids {
 	public static final FluidEntry<SimpleFlowableFluid.Flowing> MOLTEN_SOULS =
 			REGISTRATE.standardFluid("molten_souls")
 					.lang("Molten Souls")
-				.tag(forgeFluidTag("molten_souls"), FluidTags.WATER) // fabric: water tag controls physics
+					.tag(AllTags.forgeFluidTag("molten_souls"), FluidTags.WATER) // fabric: water tag controls physics
 					.fluidProperties(p -> p.levelDecreasePerBlock(2)
 							.tickRate(25)
-							.flowSpeed(2)
+							.flowSpeed(3)
 							.blastResistance(100f))
 					.fluidAttributes(() -> new CreateAttributeHandler("block.nether_stuff.molten_souls", 1500, 1400))
-					.onRegisterAfter(Registries.ITEM, molten_souls -> {
-						Fluid source = molten_souls.getSource();
+					.onRegisterAfter(Registries.ITEM, chocolate -> {
+						Fluid source = chocolate.getSource();
 						// transfer values
 						FluidStorage.combinedItemApiProvider(source.getBucket()).register(context ->
 								new FullItemFluidStorage(context, bucket -> ItemVariant.of(BUCKET), FluidVariant.of(source), FluidConstants.BUCKET));
@@ -64,6 +64,7 @@ public class ModFluids {
 								new EmptyItemFluidStorage(context, bucket -> ItemVariant.of(source.getBucket()), source, FluidConstants.BUCKET));
 					})
 					.register();
+
 	public static void registerFluidInteractions() {
 		// fabric: no fluid interaction API, use legacy method
 		FluidPlaceBlockCallback.EVENT.register(ModFluids::whenFluidsMeet);
