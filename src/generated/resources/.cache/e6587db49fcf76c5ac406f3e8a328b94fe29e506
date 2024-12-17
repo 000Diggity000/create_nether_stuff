@@ -1,0 +1,10 @@
+// 1.20.1	2024-12-17T18:18:30.8868871	Nether Stuff/Registrate Provider for nether_stuff [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+1236e80b36aec7784c2c127dea1c53e664d0725b data\c\tags\fluids\molten_souls.json
+145bbea7f2f9cff507c626afcf43efd7a2feb989 assets\nether_stuff\blockstates\molten_souls.json
+6807ff84b44db866ea366950386bbe910429b3b6 assets\nether_stuff\models\item\molten_souls_bucket.json
+1236e80b36aec7784c2c127dea1c53e664d0725b data\minecraft\tags\fluids\water.json
+024839a93496269ebeca63f01d13a08fefc9d9e3 data\c\tags\items\soul.json
+2c0207b7671b378b8fb637d0785ff630372c5ab5 assets\nether_stuff\models\block\molten_souls.json
+1880fa4b98d7071c9687f2c1af950471f5685abb assets\nether_stuff\lang\en_ud.json
+4ab6a7bc89e91083e5a38f29b3fa78ce76e91bf5 assets\nether_stuff\models\item\soul.json
+7c1967332d625c99f3401c7ff8b56cb879786121 assets\nether_stuff\lang\en_us.json
